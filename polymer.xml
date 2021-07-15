@@ -1,0 +1,51 @@
+<ForceField>
+ <!-- Shown below are example entries for force field parameters.
+
+ Please refer to the OpenMM .xml specs for more info:
+ http://docs.openmm.org/7.0.0/userguide/application.html#writing-the-xml-file-->
+
+ <AtomTypes>
+  <!-- All units are in lj units (m,epsilon,sigma) -->
+  <Type name="BB_pvpy" class="BB_pvpy" element="_BB_pvpy" mass="3" def="[_BB_pvpy]"/>
+  <Type name="BB_pvph" class="BB_pvph" element="_BB_pvph" mass="3" def="[_BB_pvpy]"/>
+  <Type name="HB_pvpy" class="HB_pvpy" element="_HB_pvpy" mass="1" def="[_HB_pvpy]"/>
+  <Type name="HB_pvph" class="HB_pvph" element="_HB_pvph" mass="1" def="[_HB_pvpy]"/>
+ </AtomTypes>
+
+ <HarmonicBondForce>
+  <!-- k has units of epsilon/sigma^2 -->
+  <Bond class1="BB_pvpy" class2="BB_pvpy" length="1.0" k="50"/>
+  <Bond class1="BB_pvph" class2="BB_pvph" length="1.0" k="50"/>
+  <Bond class1="BB_pvpy" class2="HB_pvpy" length="0.37" k="1000"/>
+  <Bond class1="BB_pvph" class2="HB_pvph" length="0.37" k="1000"/>
+ </HarmonicBondForce>
+
+ <HarmonicAngleForce>
+  <!-- k has units of epsilon/rad^2-->
+  <!-- angles are in radians-->
+  <Angle class1="HB" class2="BB" class3="BB" angle="1.57079632679" k="50"/>
+ </HarmonicAngleForce>
+
+ <PeriodicTorsionForce>
+  <!-- k has units of epsilon -->
+  <!-- Dihedrals are only defined for amino acids which have hydrogen bonding sites: P,D, and G -->
+  <Proper type1="BB_pvpy" type2="BB_pvpy" type3="BB_pvpy" type4="BB_pvpy" 
+      periodicity1="1" phase1="1.5100589" k1="0.009"
+      periodicity1="2" phase1="-0.05288348" k1="0.3517"
+      periodicity1="3" phase1="0.0174533" k1="0.025"
+      periodicity1="4" phase1="-0.29635691" k1="0.0393"/>
+
+  <Proper type1="HB_pvpy" type2="BB_pvpy" type3="BB_pvpy" type4="HB_pvpy" 
+      periodicity1="1" phase1="-1.5547393" k1="0.0425"
+      periodicity1="2" phase1="-0.44540803" k1="0.210"
+      periodicity1="3" phase1="0.70877821" k1="-0.0198"
+      periodicity1="4" phase1="0.91751959" k1="-0.0081"/>
+
+  <Proper type1="HB_pvph" type2="BB_pvph" type3="BB_pvph" type4="HB_pvph" 
+      periodicity1="1" phase1="3.07596827" k1="0.9310"
+      periodicity1="2" phase1="0.1036726" k1="0.3397"
+      periodicity1="3" phase1="2.82080114" k1="-0.1669"
+      periodicity1="4" phase1="2.76756859" k1="-0.1541"/>
+
+ </PeriodicTorsionForce>
+</ForceField>
