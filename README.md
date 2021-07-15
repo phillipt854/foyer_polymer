@@ -1,4 +1,4 @@
-### forcefield_clp: A foyer forcefield for mbuild_clp model
+### forcefield_polymer: A foyer forcefield for mBuild_polymer model
  * This forcefield is for the mbuild topology created by mBuild_polymer (github.com/phillpt854/mBuild_polymer), coarse-grained Poly(4-vinylphenol) [pvph] and Poly(2-vinylpyridine [pvpy] model created within MoSDeF framework. 
 
  * Source: Kapoor, U.; Kulshreshtha, A.; Jayaraman, A. Polymers 2020, 12 (11), 2764. 
